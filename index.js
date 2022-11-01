@@ -8,7 +8,6 @@ let owner = document.querySelector(".profile__owner");
 let statys = document.querySelector(".profile__status");
 let fieldOwner = document.querySelector(".popup__form-field_type_owner");
 let fieldStatus = document.querySelector(".popup__form-field_type_status");
-console.log(saveElem);
 
 editElem.addEventListener("click", () => {
   popupElem.classList.add("popup_opened");
