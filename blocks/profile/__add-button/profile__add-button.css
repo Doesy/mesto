@@ -5,7 +5,7 @@
   height: 50px;
   border: none;
   background-color: #000;
-  background-image: url(/images/AB-mobile.png);
+  background-image: url(../../../images/AB-mobile.png);
   background-repeat: no-repeat;
   background-position: center;
   cursor: pointer;
@@ -14,7 +14,7 @@
 
 @media (min-width: 1280px) {
   .profile__add-button {
-    background-image: url(/images/AB-desktop.svg);
+    background-image: url(../../../images/AB-desktop.svg);
   }
 }
 
