@@ -1,6 +1,6 @@
 .popup__button_action_save {
   background-position: center;
-  background-image: url(../../../images/btn-sub-m.svg);
+  background-image: url(../../../../images/btn-sub-m.svg);
   background-repeat: no-repeat;
   min-width: 282px;
   height: 46px;
@@ -9,7 +9,7 @@
 
 @media (min-width: 1280px) {
   .popup__button_action_save {
-    background-image: url(../../../images/btn-sub-d.svg);
+    background-image: url(../../../../images/btn-sub-d.svg);
     height: 50px;
     margin-bottom: 25px;
   }
