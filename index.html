@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/pages/index.css" />
+    <title>Document</title>
+  </head>
+  <body class="root">
+    <div class="page">
+      <header class="header">
+        <img src="/images/logo.svg" alt="лого-место" class="header__logo" />
+      </header>
+      <main class="content">
+        <section class="profile">
+          <img src="/images/jyc_fig.png" alt="аватара-профиля" class="profile__avatar" />
+          <div class="profile__info">
+            <div class="profile__container">
+              <h2 class="profile__owner">Жак-Ив Кусто</h2>
+              <button class="profile__edit-button" type="button"></button>
+            </div>
+            <p class="profile__status">Исследователь океана</p>
+          </div>
+          <button class="profile__add-button" type="button"></button>
+        </section>
+        <section aria-label="фото-галерея" class="gallery">
+          <div class="gallery__card">
+            <img
+              class="gallery__card-image"
+              src="/images/kirill-pershin-1088404(k1).png"
+              alt="картинка-1"
+            />
+            <div class="gallery__card-info">
+              <p class="gallery__card-title">Карачаевск</p>
+              <button class="gallery__card-button"></button>
+            </div>
+          </div>
+          <div class="gallery__card">
+            <img
+              class="gallery__card-image"
+              src="/images/kirill-pershin-1404681(EM2).png"
+              alt="картинка-2"
+            />
+            <div class="gallery__card-info">
+              <p class="gallery__card-title">Гора Эльбрус</p>
+              <button class="gallery__card-button"></button>
+            </div>
+          </div>
+          <div class="gallery__card">
+            <img
+              class="gallery__card-image"
+              src="/images/kirill-pershin-1556355(D3).png"
+              alt="картинка-3"
+            />
+            <div class="gallery__card-info">
+              <p class="gallery__card-title">Домбай</p>
+              <button class="gallery__card-button"></button>
+            </div>
+          </div>
+          <div class="gallery__card">
+            <img
+              class="gallery__card-image"
+              src="/images/kirill-pershin-1404681(EM2).png"
+              alt="картинка-4"
+            />
+            <div class="gallery__card-info">
+              <p class="gallery__card-title">Гора Эльбрус</p>
+              <button class="gallery__card-button"></button>
+            </div>
+          </div>
+          <div class="gallery__card">
+            <img
+              class="gallery__card-image"
+              src="/images/kirill-pershin-1556355(D3).png"
+              alt="картинка-5"
+            />
+            <div class="gallery__card-info">
+              <p class="gallery__card-title">Домбай</p>
+              <button class="gallery__card-button"></button>
+            </div>
+          </div>
+          <div class="gallery__card">
+            <img
+              class="gallery__card-image"
+              src="/images/kirill-pershin-1088404(k1).png"
+              alt="картинка-6"
+            />
+            <div class="gallery__card-info">
+              <p class="gallery__card-title">Карачаево-Черкесия</p>
+              <button class="gallery__card-button"></button>
+            </div>
+          </div>
+        </section>
+      </main>
+      <footer class="footer">
+        <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
+      </footer>
+      <div class="popup">
+        <div class="popup__container">
+          <button class="popup__button popup__button_action_close" type="button"></button>
+          <form class="popup__form">
+            <h2 class="popup__title">Редактировать профиль</h2>
+
+            <label class="popup__form-item" for="owner">
+              <input
+                class="popup__form-field popup__form-field_type_owner"
+                type="text"
+                placeholder="Owner"
+                name="owner"
+                maxlength="20">
+              </input>
+            </label>
+
+            <label class="popup__form-item" for="status">
+              <input
+                class="popup__form-field popup__form-field_type_status"
+                type="text"
+                placeholder="Status"
+                name="status"
+                maxlength="30"/>
+              </input>
+            </label>
+
+            <button
+              type="button"
+              class="popup__button popup__button_action_save"
+            ></button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <script src="/index.js"></script>
+  </body>
+</html>

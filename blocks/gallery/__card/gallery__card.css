@@ -1,0 +1,9 @@
+.gallery__card {
+  margin: 0;
+  height: 361px;
+  max-width: 282px;
+  background-color: #fff;
+  border-radius: 10px;
+  border: none;
+  overflow: hidden;
+}

@@ -1,0 +1,8 @@
+.gallery__card-info {
+  margin: 0 21px 0 18px;
+  display: flex;
+  flex-direction: row;
+  width: 246px;
+  justify-content: space-between;
+  align-items: center;
+}
