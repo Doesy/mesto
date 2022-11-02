@@ -14,14 +14,17 @@ function fillFields() {
   fieldStatus.value = statys.textContent;
 }
 
-function changeInfo() {
+editElem.addEventListener("click", fillFields);
+
+popupCloseElem.addEventListener("click", fillFields);
+
+function saveInfo() {
   owner.textContent = fieldOwner.value;
   statys.textContent = fieldStatus.value;
   popupElem.classList.remove("popup_opened");
 }
 
-editElem.addEventListener("click", fillFields);
-
-popupCloseElem.addEventListener("click", fillFields);
-
-form.addEventListener("submit", changeInfo);
+form.addEventListener("submit", function (e) {
+  e.preventDefault();
+  saveInfo();
+});
