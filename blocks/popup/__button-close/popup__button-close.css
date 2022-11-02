@@ -5,7 +5,7 @@
   position: absolute;
   margin-top: -36px;
   background-color: #000;
-  background-image: url(../../../../images/closebutton.svg);
+  background-image: url(../../../images/closebutton.svg);
   background-repeat: no-repeat;
   background-size: 20px;
   min-width: 20px;
