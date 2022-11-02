@@ -24,7 +24,7 @@ function fillFields() {
 
 editElem.addEventListener("click", fillFields);
 
-popupCloseElem.addEventListener("click", fillFields);
+popupCloseElem.addEventListener("click", closePopup);
 
 function saveInfo() {
   owner.textContent = fieldOwner.value;
