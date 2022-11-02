@@ -1,15 +1,14 @@
 .profile {
   display: flex;
   flex-direction: column;
-  margin: 0 auto;
-  margin-bottom: 36px;
+  margin: 0 auto 36px;
   align-items: center;
+  box-sizing: border-box;
 }
 
 @media (min-width: 1280px) {
   .profile {
     flex-direction: row;
     margin: 0 200px 50px;
-    max-height: 120px;
   }
 }

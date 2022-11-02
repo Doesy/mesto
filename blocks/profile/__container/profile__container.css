@@ -3,15 +3,11 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  max-height: 26px;
   min-width: 217px;
 }
 
 @media (min-width: 1280px) {
   .profile__container {
-    margin: 0;
-    margin-bottom: 16px;
-    min-width: fit-content;
-    min-height: fit-content;
+    margin: 0 0 8px 0;
   }
 }

@@ -1,7 +1,7 @@
 .header {
   margin: 28px auto 42px;
-  border-bottom: 1px solid #545454;
-  max-height: 55px;
+  border-bottom: 1px solid rgba(84, 84, 84, 0.7);
+  min-height: 55px;
 }
 
 @media (min-width: 1280px) {
