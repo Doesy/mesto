@@ -8,8 +8,16 @@ let statys = document.querySelector(".profile__status");
 let fieldOwner = document.querySelector(".popup__form-field_type_owner");
 let fieldStatus = document.querySelector(".popup__form-field_type_status");
 
+function openPopup() {
+  popupElem.classList.add("popup_opened");
+}
+
+function closePopup() {
+  popupElem.classList.remove("popup_opened");
+}
+
 function fillFields() {
-  popupElem.classList.toggle("popup_opened");
+  openPopup();
   fieldOwner.value = owner.textContent;
   fieldStatus.value = statys.textContent;
 }
@@ -21,7 +29,7 @@ popupCloseElem.addEventListener("click", fillFields);
 function saveInfo() {
   owner.textContent = fieldOwner.value;
   statys.textContent = fieldStatus.value;
-  popupElem.classList.remove("popup_opened");
+  closePopup();
 }
 
 form.addEventListener("submit", function (e) {
