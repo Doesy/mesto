@@ -3,7 +3,8 @@
   cursor: pointer;
   transition: opacity 0.35s ease-in-out;
   position: absolute;
-  margin-top: -36px;
+  top: -36px;
+  right: 0;
   background-color: #000;
   background-image: url(../../../images/closebutton.svg);
   background-repeat: no-repeat;
@@ -21,7 +22,7 @@
     background-size: 32px;
     min-width: 32px;
     min-height: 32px;
-    margin-right: -40px;
-    margin-top: -40px;
+    top: -40px;
+    right: -40px;
   }
 }
