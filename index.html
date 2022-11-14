@@ -28,85 +28,19 @@
           </div>
           <button class="profile__add-button" type="button"></button>
         </section>
-        <section aria-label="фото-галерея" class="gallery">
-          <div class="gallery__card">
-            <img
-              class="gallery__card-image"
-              src="./images/kirill-pershin-1088404(k1).png"
-              alt="карачаевск-фото"
-            />
-            <div class="gallery__card-info">
-              <h2 class="gallery__card-title">Карачаевск</h2>
-              <button
-                type="button"
-                class="gallery__card-button gallery__card-button_active"
-              ></button>
-            </div>
-          </div>
-          <div class="gallery__card">
-            <img
-              class="gallery__card-image"
-              src="./images/kirill-pershin-1404681(EM2).png"
-              alt="эльбрус-фото"
-            />
-            <div class="gallery__card-info">
-              <h2 class="gallery__card-title">Гора Эльбрус</h2>
-              <button type="button" class="gallery__card-button"></button>
-            </div>
-          </div>
-          <div class="gallery__card">
-            <img
-              class="gallery__card-image"
-              src="./images/kirill-pershin-1556355(D3).png"
-              alt="домбай-фото"
-            />
-            <div class="gallery__card-info">
-              <h2 class="gallery__card-title">Домбай</h2>
-              <button type="button" class="gallery__card-button"></button>
-            </div>
-          </div>
-          <div class="gallery__card">
-            <img
-              class="gallery__card-image"
-              src="./images/kirill-pershin-1404681(EM2).png"
-              alt="фото-эльбрус"
-            />
-            <div class="gallery__card-info">
-              <h2 class="gallery__card-title">Гора Эльбрус</h2>
-              <button type="button" class="gallery__card-button"></button>
-            </div>
-          </div>
-          <div class="gallery__card">
-            <img
-              class="gallery__card-image"
-              src="./images/kirill-pershin-1556355(D3).png"
-              alt="фото-домбай"
-            />
-            <div class="gallery__card-info">
-              <h2 class="gallery__card-title">Домбай</h2>
-              <button type="button" class="gallery__card-button"></button>
-            </div>
-          </div>
-          <div class="gallery__card">
-            <img
-              class="gallery__card-image"
-              src="./images/kirill-pershin-1088404(k1).png"
-              alt="фото-карачаевск"
-            />
-            <div class="gallery__card-info">
-              <h2 class="gallery__card-title">Карачаево-Черкесия</h2>
-              <button type="button" class="gallery__card-button"></button>
-            </div>
-          </div>
-        </section>
+        <section aria-label="фото-галерея" class="gallery"></section>
       </main>
       <footer class="footer">
         <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
       </footer>
-      <div class="popup">
+      <div class="popup popup__edit-form">
         <div class="popup__container">
           <button class="popup__button-close" type="button"></button>
-          <form action="#" class="popup__form" name="edit-form">
+          <form
+            action="#"
+            class="popup__form popup__form_type_edit"
+            name="edit-form"
+          >
             <h2 class="popup__title">Редактировать профиль</h2>
 
             <input
@@ -129,10 +63,65 @@
               autocomplete="off"
             />
 
-            <button type="submit" class="popup__button-save">Сохранить</button>
+            <button type="submit" class="popup__button-submit">
+              Сохранить
+            </button>
           </form>
         </div>
       </div>
+      <div class="popup popup__add-form">
+        <div class="popup__container">
+          <button class="popup__button-close" type="button"></button>
+          <form
+            action="#"
+            class="popup__form popup__form_type_add"
+            name="add-form"
+          >
+            <h2 class="popup__title">Новое место</h2>
+
+            <input
+              id="place-name"
+              class="popup__form-field popup__form-field_type_place-name"
+              type="text"
+              placeholder="Название"
+              name="place-name"
+              maxlength="30"
+              autocomplete="off"
+            />
+
+            <input
+              id="image-link"
+              class="popup__form-field popup__form-field_type_image-link"
+              type="text"
+              placeholder="Ссылка на картинку"
+              name="image-link"
+              autocomplete="off"
+            />
+
+            <button type="submit" class="popup__button-submit">Создать</button>
+          </form>
+        </div>
+      </div>
+      <div class="popup popup__card-image">
+        <div class="popup__container">
+          <button class="popup__button-close" type="button"></button>
+          <figure class="popup__figure">
+            <img src="#" alt="фото-поезд-полка" class="popup__image" />
+            <figcaption class="popup__image-caption"></figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <template id="user-card">
+        <div class="gallery__card">
+          <button type="button" class="gallery__card-delete"></button>
+          <img class="gallery__card-image" src="#" alt=" " />
+          <div class="gallery__card-info">
+            <h2 class="gallery__card-title"></h2>
+            <button type="button" class="gallery__card-button"></button>
+          </div>
+        </div>
+      </template>
     </div>
     <script src="./scripts/index.js"></script>
   </body>
