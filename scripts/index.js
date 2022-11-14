@@ -1,4 +1,4 @@
-const initialCards = [
+/*const initialCards = [
   {
     name: "Архыз",
     link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg",
@@ -24,7 +24,7 @@ const initialCards = [
     link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg",
   },
 ];
-
+*/
 const galleryCard = document.querySelector(".gallery");
 const popupAddForm = document.querySelector(".popup__form_type_add");
 const fieldName = document.querySelector(".popup__form-field_type_place-name");
@@ -32,6 +32,14 @@ const fieldLink = document.querySelector(".popup__form-field_type_image-link");
 const cardTemplate = document
   .querySelector("#user-card")
   .content.querySelector(".gallery__card");
+
+function openPopup(popup) {
+  popup.closest(".popup").classList.add("popup_opened");
+}
+
+function closePopup(popup) {
+  popup.closest(".popup").classList.remove("popup_opened");
+}
 
 function deleteCard(evt) {
   evt.target.closest(".gallery__card").remove();
@@ -64,13 +72,18 @@ function generateCard(dataCard) {
   const likeButton = newCard.querySelector(".gallery__card-button");
   likeButton.addEventListener("click", reactCard);
 
-  cardImage.addEventListener("click", () => {
-    document.querySelector(".popup_type_image").classList.add("popup_opened");
-    document.querySelector(".popup__image").src = cardImage.src;
-    document.querySelector(".popup__image").alt = cardTitle.textContent;
-    document.querySelector(".popup__image-caption").textContent =
-      cardTitle.textContent;
-  });
+  const popupCardImage = document.querySelector(".popup_type_image");
+  const popupImage = document.querySelector(".popup__image");
+  const popupImageCaption = document.querySelector(".popup__image-caption");
+
+  function openPopupImage() {
+    popupImage.src = cardImage.src;
+    popupImage.alt = cardTitle.textContent;
+    popupImageCaption.textContent = cardTitle.textContent;
+    openPopup(popupCardImage);
+  }
+
+  cardImage.addEventListener("click", openPopupImage);
 
   return newCard;
 }
@@ -79,14 +92,18 @@ function renderCard(dataCard) {
   galleryCard.prepend(generateCard(dataCard));
 }
 
-popupAddForm.addEventListener("submit", function (evt) {
+/* реализация отправки данных для создания пользователской карточки */
+
+function handleSubmitAddForm(evt) {
   evt.preventDefault();
   renderCard({
     name: fieldName.value,
     link: fieldLink.value,
   });
-  popupAddForm.closest(".popup").classList.remove("popup_opened");
-});
+  closePopup(popupAddForm);
+}
+
+popupAddForm.addEventListener("submit", handleSubmitAddForm);
 
 /*Открытие формы редактирования профиля и добавления карточек*/
 
@@ -94,21 +111,26 @@ const editElem = document.querySelector(".profile__edit-button");
 
 const addElem = document.querySelector(".profile__add-button");
 
-editElem.addEventListener("click", () => {
-  document.querySelector(".popup_type_edit").classList.add("popup_opened");
+function openEditForm() {
   fillFields();
-});
+  openPopup(popupEditForm);
+}
 
-addElem.addEventListener("click", () => {
-  document.querySelector(".popup_type_add").classList.add("popup_opened");
-});
+editElem.addEventListener("click", openEditForm);
+
+function openAddForm() {
+  popupAddForm.reset();
+  openPopup(popupAddForm);
+}
+
+addElem.addEventListener("click", openAddForm);
 
 /*Реализация функционала формы редактирования профиля*/
 const popupEditForm = document.querySelector(".popup__form_type_edit");
-let owner = document.querySelector(".profile__owner");
-let statys = document.querySelector(".profile__status");
-let fieldOwner = document.querySelector(".popup__form-field_type_owner");
-let fieldStatus = document.querySelector(".popup__form-field_type_status");
+const owner = document.querySelector(".profile__owner");
+const statys = document.querySelector(".profile__status");
+const fieldOwner = document.querySelector(".popup__form-field_type_owner");
+const fieldStatus = document.querySelector(".popup__form-field_type_status");
 
 function fillFields() {
   fieldOwner.value = owner.textContent;
@@ -120,11 +142,13 @@ function saveInfo() {
   statys.textContent = fieldStatus.value;
 }
 
-popupEditForm.addEventListener("submit", function (evt) {
+function handleSubmitEditForm(evt) {
   evt.preventDefault();
   saveInfo();
-  popupEditForm.closest(".popup").classList.remove("popup_opened");
-});
+  closePopup(popupEditForm);
+}
+
+popupEditForm.addEventListener("submit", handleSubmitEditForm);
 
 /*Реализация закрытия поп-апов*/
 const popupCloseElem = document.querySelectorAll(".popup__button-close");
@@ -134,5 +158,3 @@ popupCloseElem.forEach((elem) => {
     elem.closest(".popup").classList.remove("popup_opened");
   });
 });
-
-console.log("Конец файла");
