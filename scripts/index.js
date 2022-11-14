@@ -65,7 +65,7 @@ function generateCard(dataCard) {
   likeButton.addEventListener("click", reactCard);
 
   cardImage.addEventListener("click", () => {
-    document.querySelector(".popup__card-image").classList.add("popup_opened");
+    document.querySelector(".popup_type_image").classList.add("popup_opened");
     document.querySelector(".popup__image").src = cardImage.src;
     document.querySelector(".popup__image").alt = cardTitle.textContent;
     document.querySelector(".popup__image-caption").textContent =
@@ -95,12 +95,12 @@ const editElem = document.querySelector(".profile__edit-button");
 const addElem = document.querySelector(".profile__add-button");
 
 editElem.addEventListener("click", () => {
-  document.querySelector(".popup__edit-form").classList.add("popup_opened");
+  document.querySelector(".popup_type_edit").classList.add("popup_opened");
   fillFields();
 });
 
 addElem.addEventListener("click", () => {
-  document.querySelector(".popup__add-form").classList.add("popup_opened");
+  document.querySelector(".popup_type_add").classList.add("popup_opened");
 });
 
 /*Реализация функционала формы редактирования профиля*/
