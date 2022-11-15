@@ -1,30 +1,3 @@
-/*const initialCards = [
-  {
-    name: "Архыз",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg",
-  },
-  {
-    name: "Челябинская область",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg",
-  },
-  {
-    name: "Иваново",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg",
-  },
-  {
-    name: "Камчатка",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg",
-  },
-  {
-    name: "Холмогорский район",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg",
-  },
-  {
-    name: "Байкал",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg",
-  },
-];
-*/
 const galleryCard = document.querySelector(".gallery");
 const popupAddForm = document.querySelector(".popup__form_type_add");
 const fieldName = document.querySelector(".popup__form-field_type_place-name");
@@ -155,6 +128,6 @@ const popupCloseElem = document.querySelectorAll(".popup__button-close");
 
 popupCloseElem.forEach((elem) => {
   elem.addEventListener("click", () => {
-    elem.closest(".popup").classList.remove("popup_opened");
+    closePopup(elem);
   });
 });
