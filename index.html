@@ -37,6 +37,7 @@
             action="#"
             class="popup__form popup__form_type_edit"
             name="edit-form"
+            novalidate
           >
             <h2 class="popup__title">Редактировать профиль</h2>
 
@@ -46,8 +47,10 @@
               type="text"
               placeholder="Owner"
               name="owner"
+              minlength=""
               maxlength="20"
               autocomplete="off"
+              required
             />
 
             <input
@@ -56,8 +59,10 @@
               type="text"
               placeholder="Status"
               name="status"
-              maxlength="30"
+              minlength="2"
+              maxlength="200"
               autocomplete="off"
+              required
             />
 
             <button type="submit" class="popup__button-submit">
@@ -73,6 +78,7 @@
             action="#"
             class="popup__form popup__form_type_add"
             name="add-form"
+            novalidate
           >
             <h2 class="popup__title">Новое место</h2>
 
@@ -82,17 +88,20 @@
               type="text"
               placeholder="Название"
               name="place-name"
+              minlength="2"
               maxlength="30"
               autocomplete="off"
+              required
             />
 
             <input
               id="image-link"
               class="popup__form-field popup__form-field_type_image-link"
-              type="text"
+              type="url"
               placeholder="Ссылка на картинку"
               name="image-link"
               autocomplete="off"
+              required
             />
 
             <button type="submit" class="popup__button-submit">Создать</button>

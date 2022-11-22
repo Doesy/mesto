@@ -123,7 +123,18 @@ function handleSubmitEditForm(evt) {
 
 popupEditForm.addEventListener("submit", handleSubmitEditForm);
 
-/*Реализация закрытия поп-апов*/
+// Реализация закрытия поп-апов кликом по оверлею
+const popupsElem = document.querySelectorAll(".popup");
+
+popupsElem.forEach((elem) => {
+  elem.addEventListener("click", (event) => {
+    if (event.target === event.currentTarget) {
+      closePopup(elem);
+    }
+  });
+});
+
+/*Реализация закрытия поп-апов кнопкой "Х"*/
 const popupCloseElem = document.querySelectorAll(".popup__button-close");
 
 popupCloseElem.forEach((elem) => {
@@ -131,3 +142,31 @@ popupCloseElem.forEach((elem) => {
     closePopup(elem);
   });
 });
+
+// ссылка на место
+
+const formElement = document.querySelector(".popup__form_type_add");
+const formInput = formElement.querySelector(
+  ".popup__form-field_type_image-link"
+);
+const formError = formElement.querySelector(`.${formInput.id}-error`);
+
+const showInputError = (element) => {
+  element.classList.add("popup__form-field_type_error");
+};
+
+const hideInputError = (element) => {
+  element.classList.remove("popup__form-field_type_error");
+};
+
+const isValid = () => {
+  if (!formInput.validity.valid) {
+    // Если поле не проходит валидацию, покажем ошибку
+    showInputError(formInput);
+  } else {
+    // Если проходит, скроем
+    hideInputError(formInput);
+  }
+};
+console.log(formInput.id);
+formInput.addEventListener("input", isValid);
