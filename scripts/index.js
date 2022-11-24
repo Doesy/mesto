@@ -1,7 +1,7 @@
 const galleryCard = document.querySelector(".gallery");
 const popupAddForm = document.querySelector(".popup__form_type_add");
-const fieldName = document.querySelector(".popup__form-field_type_place-name");
-const fieldLink = document.querySelector(".popup__form-field_type_image-link");
+const fieldName = document.querySelector("#place-name");
+const fieldLink = document.querySelector("#image-link");
 const cardTemplate = document
   .querySelector("#user-card")
   .content.querySelector(".gallery__card");
@@ -102,8 +102,8 @@ addElem.addEventListener("click", openAddForm);
 const popupEditForm = document.querySelector(".popup__form_type_edit");
 const owner = document.querySelector(".profile__owner");
 const statys = document.querySelector(".profile__status");
-const fieldOwner = document.querySelector(".popup__form-field_type_owner");
-const fieldStatus = document.querySelector(".popup__form-field_type_status");
+const fieldOwner = popupEditForm.querySelector("#owner");
+const fieldStatus = popupEditForm.querySelector("#status");
 
 function fillFields() {
   fieldOwner.value = owner.textContent;
@@ -145,28 +145,65 @@ popupCloseElem.forEach((elem) => {
 
 // ссылка на место
 
-const formElement = document.querySelector(".popup__form_type_add");
-const formInput = formElement.querySelector(
-  ".popup__form-field_type_image-link"
-);
-const formError = formElement.querySelector(`.${formInput.id}-error`);
+const formElement = document.querySelector(".popup__form");
+const formInput = formElement.querySelector(".popup__input");
+/*const formError = formElement.querySelector(`.${formInput.id}-error`);*/
 
-const showInputError = (element) => {
-  element.classList.add("popup__form-field_type_error");
-};
+function showInputError(formElement, inputElement, errorMessage) {
+  const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
+  inputElement.classList.add("popup__input_type_error");
+  errorElement.textContent = errorMessage;
+  errorElement.classList.add("popup__error_visible");
+}
 
-const hideInputError = (element) => {
-  element.classList.remove("popup__form-field_type_error");
-};
+function hideInputError(formElement, inputElement) {
+  const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
+  inputElement.classList.remove("popup__input_type_error");
+  errorElement.classList.remove("popup__error_visible");
+  errorElement.textContent = "";
+}
 
-const isValid = () => {
-  if (!formInput.validity.valid) {
-    // Если поле не проходит валидацию, покажем ошибку
-    showInputError(formInput);
+function isValid(formElement, inputElement) {
+  if (!inputElement.validity.valid) {
+    showInputError(formElement, inputElement, inputElement.validationMessage);
   } else {
-    // Если проходит, скроем
-    hideInputError(formInput);
+    hideInputError(formElement, inputElement);
   }
-};
-console.log(formInput.id);
-formInput.addEventListener("input", isValid);
+}
+
+function setEventListeners(formElement) {
+  const inputList = Array.from(formElement.querySelectorAll(".popup__input"));
+  const buttonElement = formElement.querySelector(".popup__button-submit");
+  toggleButtinState(inputList, buttonElement);
+  inputList.forEach((inputElement) => {
+    inputElement.addEventListener("input", () => {
+      isValid(formElement, inputElement);
+      toggleButtinState(inputList, buttonElement);
+    });
+  });
+}
+
+function enableValidation() {
+  const formList = Array.from(document.querySelectorAll(".popup__form"));
+  formList.forEach((formElement) => {
+    setEventListeners(formElement);
+  });
+}
+
+enableValidation();
+
+function hasInvalidInput(inputList) {
+  return inputList.some((inputElement) => {
+    return !inputElement.validity.valid;
+  });
+}
+
+function toggleButtinState(inputList, buttonElement) {
+  if (hasInvalidInput(inputList)) {
+    buttonElement.classList.add("popup__button-submit_disabled");
+    buttonElement.setAttribute("disabled", "disabled");
+  } else {
+    buttonElement.classList.remove("popup__button-submit_disabled");
+    buttonElement.removeAttribute("disabled", "disabled");
+  }
+}

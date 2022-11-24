@@ -1,26 +1,22 @@
 .popup__form-field {
-  all: unset;
-  margin: 0 auto 30px;
-  padding-bottom: 9px;
-  min-width: calc(100% - 2 * 22px);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 17px;
-  background-color: #fff;
+  margin: 0 auto 12px;
+  display: flex;
+  flex-direction: column;
+  width: calc(100% - 2 * 22px);
+  box-sizing: border-box;
 }
 
 .popup__form-field:last-of-type {
-  margin-bottom: 45px;
+  margin-bottom: 28px;
 }
 
 @media (min-width: 1280px) {
   .popup__form-field {
-    padding-bottom: 8px;
-    min-width: calc(100% - 2 * 36px);
+    width: calc(100% - 2 * 36px);
+    margin-bottom: 10px;
   }
 
   .popup__form-field:last-of-type {
-    margin-bottom: 48px;
+    margin-bottom: 25px;
   }
 }

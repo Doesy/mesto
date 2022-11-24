@@ -7,7 +7,7 @@
   flex-direction: column;
   border-radius: 10px;
   color: #000;
-  min-width: 282px;
+  width: 282px;
 }
 
 @media (min-width: 1280px) {

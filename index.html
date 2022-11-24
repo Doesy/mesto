@@ -40,31 +40,34 @@
             novalidate
           >
             <h2 class="popup__title">Редактировать профиль</h2>
-
-            <input
-              id="owner"
-              class="popup__form-field popup__form-field_type_owner"
-              type="text"
-              placeholder="Owner"
-              name="owner"
-              minlength=""
-              maxlength="20"
-              autocomplete="off"
-              required
-            />
-
-            <input
-              id="status"
-              class="popup__form-field popup__form-field_type_status"
-              type="text"
-              placeholder="Status"
-              name="status"
-              minlength="2"
-              maxlength="200"
-              autocomplete="off"
-              required
-            />
-
+            <label class="popup__form-field">
+              <input
+                id="owner"
+                class="popup__input"
+                type="text"
+                placeholder="Имя"
+                name="owner"
+                minlength="2"
+                maxlength="20"
+                autocomplete="off"
+                required
+              />
+              <span class="popup__error owner-error">Error Message</span>
+            </label>
+            <label class="popup__form-field">
+              <input
+                id="status"
+                class="popup__input"
+                type="text"
+                placeholder="Статус"
+                name="status"
+                minlength="2"
+                maxlength="200"
+                autocomplete="off"
+                required
+              />
+              <span class="popup__error status-error">Error Message</span>
+            </label>
             <button type="submit" class="popup__button-submit">
               Сохранить
             </button>
@@ -81,29 +84,32 @@
             novalidate
           >
             <h2 class="popup__title">Новое место</h2>
-
-            <input
-              id="place-name"
-              class="popup__form-field popup__form-field_type_place-name"
-              type="text"
-              placeholder="Название"
-              name="place-name"
-              minlength="2"
-              maxlength="30"
-              autocomplete="off"
-              required
-            />
-
-            <input
-              id="image-link"
-              class="popup__form-field popup__form-field_type_image-link"
-              type="url"
-              placeholder="Ссылка на картинку"
-              name="image-link"
-              autocomplete="off"
-              required
-            />
-
+            <label class="popup__form-field">
+              <input
+                id="place-name"
+                class="popup__input"
+                type="text"
+                placeholder="Название"
+                name="place-name"
+                minlength="2"
+                maxlength="30"
+                autocomplete="off"
+                required
+              />
+              <span class="popup__error place-name-error"></span>
+            </label>
+            <label class="popup__form-field">
+              <input
+                id="image-link"
+                class="popup__input"
+                type="url"
+                placeholder="Ссылка на картинку"
+                name="image-link"
+                autocomplete="off"
+                required
+              />
+              <span class="popup__error image-link-error"></span>
+            </label>
             <button type="submit" class="popup__button-submit">Создать</button>
           </form>
         </div>
@@ -133,5 +139,6 @@
     </div>
     <script src="./scripts/data.js"></script>
     <script src="./scripts/index.js"></script>
+    <script src="./scripts/validation.js"></script>
   </body>
 </html>
