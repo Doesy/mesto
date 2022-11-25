@@ -1,4 +1,21 @@
 .popup__button-submit_disabled {
-  opacity: 0.2;
+  border: 1px solid rgba(0, 0, 0, 1);
   background-color: #c4c4c4;
+  color: #000;
+  opacity: 0.2;
+  transition: opacity 0.35s ease-in-out;
+}
+
+.popup__button-submit_disabled:hover {
+  opacity: 0.2;
+}
+
+@media (min-width: 1280px) {
+  .popup__button-submit_disabled {
+    height: 50px;
+    margin-bottom: 37px;
+    min-width: 358px;
+    font-size: 18px;
+    line-height: 22px;
+  }
 }

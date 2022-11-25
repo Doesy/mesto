@@ -40,34 +40,36 @@
             novalidate
           >
             <h2 class="popup__title">Редактировать профиль</h2>
-            <label class="popup__form-field">
-              <input
-                id="owner"
-                class="popup__input"
-                type="text"
-                placeholder="Имя"
-                name="owner"
-                minlength="2"
-                maxlength="20"
-                autocomplete="off"
-                required
-              />
-              <span class="popup__error owner-error">Error Message</span>
-            </label>
-            <label class="popup__form-field">
-              <input
-                id="status"
-                class="popup__input"
-                type="text"
-                placeholder="Статус"
-                name="status"
-                minlength="2"
-                maxlength="200"
-                autocomplete="off"
-                required
-              />
-              <span class="popup__error status-error">Error Message</span>
-            </label>
+            <fieldset class="popup__fieldset">
+              <label class="popup__form-field">
+                <input
+                  id="owner"
+                  class="popup__input"
+                  type="text"
+                  placeholder="Имя"
+                  name="owner"
+                  minlength="2"
+                  maxlength="20"
+                  autocomplete="off"
+                  required
+                />
+                <span class="popup__error owner-error">Error Message</span>
+              </label>
+              <label class="popup__form-field">
+                <input
+                  id="status"
+                  class="popup__input"
+                  type="text"
+                  placeholder="Статус"
+                  name="status"
+                  minlength="2"
+                  maxlength="200"
+                  autocomplete="off"
+                  required
+                />
+                <span class="popup__error status-error">Error Message</span>
+              </label>
+            </fieldset>
             <button type="submit" class="popup__button-submit">
               Сохранить
             </button>
@@ -84,32 +86,34 @@
             novalidate
           >
             <h2 class="popup__title">Новое место</h2>
-            <label class="popup__form-field">
-              <input
-                id="place-name"
-                class="popup__input"
-                type="text"
-                placeholder="Название"
-                name="place-name"
-                minlength="2"
-                maxlength="30"
-                autocomplete="off"
-                required
-              />
-              <span class="popup__error place-name-error"></span>
-            </label>
-            <label class="popup__form-field">
-              <input
-                id="image-link"
-                class="popup__input"
-                type="url"
-                placeholder="Ссылка на картинку"
-                name="image-link"
-                autocomplete="off"
-                required
-              />
-              <span class="popup__error image-link-error"></span>
-            </label>
+            <fieldset class="popup__fieldset">
+              <label class="popup__form-field">
+                <input
+                  id="place-name"
+                  class="popup__input"
+                  type="text"
+                  placeholder="Название"
+                  name="place-name"
+                  minlength="2"
+                  maxlength="30"
+                  autocomplete="off"
+                  required
+                />
+                <span class="popup__error place-name-error"></span>
+              </label>
+              <label class="popup__form-field">
+                <input
+                  id="image-link"
+                  class="popup__input"
+                  type="url"
+                  placeholder="Ссылка на картинку"
+                  name="image-link"
+                  autocomplete="off"
+                  required
+                />
+                <span class="popup__error image-link-error"></span>
+              </label>
+            </fieldset>
             <button type="submit" class="popup__button-submit">Создать</button>
           </form>
         </div>
