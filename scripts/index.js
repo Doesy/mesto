@@ -123,12 +123,22 @@ function handleSubmitEditForm(evt) {
 
 popupEditForm.addEventListener("submit", handleSubmitEditForm);
 
-// Реализация закрытия поп-апов кликом по оверлею
+// Реализация закрытия поп-апов через Escape
+
 const popupsElem = document.querySelectorAll(".popup");
+popupsElem.forEach((elem) => {
+  elem.addEventListener("keydown", (evt) => {
+    if (evt.key === "Escape") {
+      closePopup(elem);
+    }
+  });
+});
+
+// Реализация закрытия поп-апов кликом по оверлею
 
 popupsElem.forEach((elem) => {
-  elem.addEventListener("click", (event) => {
-    if (event.target === event.currentTarget) {
+  elem.addEventListener("click", (evt) => {
+    if (evt.target === evt.currentTarget) {
       closePopup(elem);
     }
   });
@@ -143,11 +153,7 @@ popupCloseElem.forEach((elem) => {
   });
 });
 
-// ссылка на место
-
-const formElement = document.querySelector(".popup__form");
-const formInput = formElement.querySelector(".popup__input");
-/*const formError = formElement.querySelector(`.${formInput.id}-error`);*/
+// Функционал валидации
 
 function showInputError(formElement, inputElement, errorMessage) {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
@@ -174,11 +180,11 @@ function isValid(formElement, inputElement) {
 function setEventListeners(formElement) {
   const inputList = Array.from(formElement.querySelectorAll(".popup__input"));
   const buttonElement = formElement.querySelector(".popup__button-submit");
-  toggleButtinState(inputList, buttonElement);
+  toggleButtonState(inputList, buttonElement);
   inputList.forEach((inputElement) => {
     inputElement.addEventListener("input", () => {
       isValid(formElement, inputElement);
-      toggleButtinState(inputList, buttonElement);
+      toggleButtonState(inputList, buttonElement);
     });
   });
 }
@@ -198,12 +204,12 @@ function hasInvalidInput(inputList) {
   });
 }
 
-function toggleButtinState(inputList, buttonElement) {
+function toggleButtonState(inputList, buttonElement) {
   if (hasInvalidInput(inputList)) {
     buttonElement.classList.add("popup__button-submit_disabled");
-    buttonElement.setAttribute("disabled", "disabled");
+    buttonElement.setAttribute("disabled", "");
   } else {
     buttonElement.classList.remove("popup__button-submit_disabled");
-    buttonElement.removeAttribute("disabled", "disabled");
+    buttonElement.removeAttribute("disabled", "");
   }
 }
