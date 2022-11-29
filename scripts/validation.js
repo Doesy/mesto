@@ -51,7 +51,7 @@ function setEventListeners(formElement, validationData) {
   });
 }
 
-function enableValidation() {
+function enableValidation(validationData) {
   const formList = Array.from(
     document.querySelectorAll(validationData.formSelector)
   );
@@ -74,4 +74,25 @@ function toggleButtonState(inputList, buttonElement, validationData) {
     buttonElement.classList.remove(validationData.inactiveButtonClass);
     buttonElement.removeAttribute("disabled", "");
   }
+}
+
+function disableSubmitButton(popup, validationData) {
+  popup
+    .querySelector(validationData.submitButtonSelector)
+    .classList.add(validationData.inactiveButtonClass);
+  popup
+    .querySelector(validationData.submitButtonSelector)
+    .setAttribute("disabled", "");
+}
+//Очистка ошибок при открытии
+
+function clearErrors(popup, validationData) {
+  const errorFields = popup.querySelectorAll(".popup__error");
+  const errorInputs = popup.querySelectorAll(validationData.inputSelector);
+  errorFields.forEach((field) => {
+    field.innerText = "";
+  });
+  errorInputs.forEach((input) => {
+    input.classList.remove(validationData.inputErrorClass);
+  });
 }
