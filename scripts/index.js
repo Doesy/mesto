@@ -22,6 +22,7 @@ const popupAdd = document.querySelector(".popup_type_add");
 
 function openPopup(popup) {
   popup.classList.add("popup_opened");
+  document.addEventListener("keydown", closePopupWithEscape);
 }
 
 function closePopup(popup) {
@@ -65,7 +66,6 @@ function generateCard(dataCard) {
     popupImage.alt = cardTitle.textContent;
     popupImageCaption.textContent = cardTitle.textContent;
     openPopup(popupCardImage);
-    document.addEventListener("keydown", closePopupWithEscape);
   }
 
   cardImage.addEventListener("click", openPopupImage);
@@ -97,7 +97,6 @@ function openEditForm() {
   clearErrors(popupEditForm, validationData);
   openPopup(popupEdit);
   disableSubmitButton(popupEditForm, validationData);
-  document.addEventListener("keydown", closePopupWithEscape);
 }
 
 buttonOpenEditProfileForm.addEventListener("click", openEditForm);
@@ -107,7 +106,6 @@ function openAddForm() {
   clearErrors(popupAddForm, validationData);
   openPopup(popupAdd);
   disableSubmitButton(popupAddForm, validationData);
-  document.addEventListener("keydown", closePopupWithEscape);
 }
 
 buttonOpenAddCardForm.addEventListener("click", openAddForm);
