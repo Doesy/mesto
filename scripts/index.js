@@ -1,7 +1,6 @@
 import Card from "./Card.js";
 import FormValidator from "./FormValidator.js";
 import { initialCards, validationData } from "./data.js";
-import { clearErrors, disableSubmitButton } from "./validation utility.js";
 
 const galleryCard = document.querySelector(".gallery");
 const popupAddForm = document.querySelector(".popup__form_type_add");
@@ -21,6 +20,8 @@ const popupImage = document.querySelector(".popup__image");
 const popupImageCaption = document.querySelector(".popup__image-caption");
 const popupEdit = document.querySelector(".popup_type_edit");
 const popupAdd = document.querySelector(".popup_type_add");
+const templateSelector = "#user-card";
+const cardSelector = ".gallery__card";
 
 function openPopup(popup) {
   popup.classList.add("popup_opened");
@@ -35,8 +36,13 @@ function closePopup(popup) {
 /* Заполнение карточками из заданного массива */
 
 initialCards.forEach((dataCard) => {
-  const card = new Card(dataCard.name, dataCard.link);
-  const cardElement = card.generateCard();
+  const card = new Card(
+    dataCard.name,
+    dataCard.link,
+    templateSelector,
+    cardSelector
+  );
+  const cardElement = card.createCard();
   galleryCard.prepend(cardElement);
 });
 
@@ -44,8 +50,13 @@ initialCards.forEach((dataCard) => {
 
 function handleSubmitAddForm(evt) {
   evt.preventDefault();
-  const card = new Card(fieldName.value, fieldLink.value);
-  const cardElement = card.generateCard();
+  const card = new Card(
+    fieldName.value,
+    fieldLink.value,
+    templateSelector,
+    cardSelector
+  );
+  const cardElement = card.createCard();
   galleryCard.prepend(cardElement);
   closePopup(popupAdd);
 }
@@ -56,18 +67,16 @@ popupAddForm.addEventListener("submit", handleSubmitAddForm);
 
 function openEditForm() {
   fillFields();
-  clearErrors(popupEditForm, validationData);
+  validateEditForm.resetValidation();
   openPopup(popupEdit);
-  disableSubmitButton(popupEditForm, validationData);
 }
 
 buttonOpenEditProfileForm.addEventListener("click", openEditForm);
 
 function openAddForm() {
   popupAddForm.reset();
-  clearErrors(popupAddForm, validationData);
+  validateAddForm.resetValidation();
   openPopup(popupAdd);
-  disableSubmitButton(popupAddForm, validationData);
 }
 
 buttonOpenAddCardForm.addEventListener("click", openAddForm);
@@ -120,16 +129,10 @@ popupCloseElem.forEach((elem) => {
   });
 });
 
-const validateEditForm = new FormValidator(
-  ".popup__form_type_edit",
-  validationData
-);
+const validateEditForm = new FormValidator(popupEditForm, validationData);
 validateEditForm.enableValidation();
 
-const validateAddForm = new FormValidator(
-  ".popup__form_type_add",
-  validationData
-);
+const validateAddForm = new FormValidator(popupAddForm, validationData);
 validateAddForm.enableValidation();
 
 export { popupImage, popupCardImage, popupImageCaption, openPopup };

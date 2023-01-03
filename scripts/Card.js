@@ -6,20 +6,17 @@ import {
 } from "./index.js";
 
 class Card {
-  constructor(name, link) {
-    this._element = this._getTemplate();
+  constructor(name, link, templateSelect, cardSelect) {
+    this._templateSelector = templateSelect;
+    this._cardSelector = cardSelect;
     this._name = name;
     this._link = link;
-    this._deleteButton = this._element.querySelector(".gallery__card-delete");
-    this._cardImage = this._element.querySelector(".gallery__card-image");
-    this._likeButton = this._element.querySelector(".gallery__card-button");
-    this._cardTitle = this._element.querySelector(".gallery__card-title");
   }
 
   _getTemplate() {
     const cardElement = document
-      .querySelector("#user-card")
-      .content.querySelector(".gallery__card")
+      .querySelector(this._templateSelector)
+      .content.querySelector(this._cardSelector)
       .cloneNode(true);
     return cardElement;
   }
@@ -40,6 +37,7 @@ class Card {
 
   _handleOpenCardImage() {
     popupImage.src = this._link;
+    popupImage.alt = this._name;
     popupImageCaption.textContent = this._name;
     openPopup(popupCardImage);
   }
@@ -53,9 +51,19 @@ class Card {
     this._likeButton.classList.toggle("gallery__card-button_active");
   }
 
-  generateCard() {
+  _generateCard() {
+    this._element = this._getTemplate();
+    this._deleteButton = this._element.querySelector(".gallery__card-delete");
+    this._cardImage = this._element.querySelector(".gallery__card-image");
+    this._likeButton = this._element.querySelector(".gallery__card-button");
+    this._cardTitle = this._element.querySelector(".gallery__card-title");
     this._cardTitle.textContent = this._name;
     this._cardImage.src = this._link;
+    this._cardImage.alt = this._name;
+  }
+
+  createCard() {
+    this._generateCard();
     this._setEventListenters();
     return this._element;
   }
