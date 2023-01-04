@@ -35,10 +35,10 @@ function closePopup(popup) {
 
 /* Заполнение карточками из заданного массива */
 
-function createCard(dataCa) {
+function createCard(cardData) {
   const card = new Card(
-    dataCa.name,
-    dataCa.link,
+    cardData.name,
+    cardData.link,
     templateSelector,
     cardSelector
   );
@@ -47,14 +47,6 @@ function createCard(dataCa) {
 }
 
 initialCards.forEach((dataCard) => {
-  /*const card = new Card(
-    dataCard.name,
-    dataCard.link,
-    templateSelector,
-    cardSelector
-  );
-  const cardElement = card.createCard();*/
-
   galleryCard.prepend(createCard(dataCard));
 });
 
