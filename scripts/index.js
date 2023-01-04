@@ -35,15 +35,27 @@ function closePopup(popup) {
 
 /* Заполнение карточками из заданного массива */
 
-initialCards.forEach((dataCard) => {
+function createCard(dataCa) {
   const card = new Card(
+    dataCa.name,
+    dataCa.link,
+    templateSelector,
+    cardSelector
+  );
+  const cardElement = card.createCard();
+  return cardElement;
+}
+
+initialCards.forEach((dataCard) => {
+  /*const card = new Card(
     dataCard.name,
     dataCard.link,
     templateSelector,
     cardSelector
   );
-  const cardElement = card.createCard();
-  galleryCard.prepend(cardElement);
+  const cardElement = card.createCard();*/
+
+  galleryCard.prepend(createCard(dataCard));
 });
 
 /* реализация отправки данных для создания пользователской карточки */
