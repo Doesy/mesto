@@ -1,16 +1,13 @@
-import {
-  popupImage,
-  popupCardImage,
-  popupImageCaption,
-  openPopup,
-} from "./index.js";
+//import { popupImage, popupCardImage, popupImageCaption } from "./index.js";
 
 class Card {
-  constructor(name, link, templateSelect, cardSelect) {
+  constructor({ name, link, handleCLick }, templateSelect, cardSelect) {
     this._templateSelector = templateSelect;
     this._cardSelector = cardSelect;
     this._name = name;
     this._link = link;
+    this._handleClick = handleCLick;
+    this._element = this._getTemplate();
   }
 
   _getTemplate() {
@@ -27,19 +24,12 @@ class Card {
     });
 
     this._cardImage.addEventListener("click", () => {
-      this._handleOpenCardImage();
+      this._handleClick(this._name, this._link);
     });
 
     this._likeButton.addEventListener("click", () => {
       this._reactCard();
     });
-  }
-
-  _handleOpenCardImage() {
-    popupImage.src = this._link;
-    popupImage.alt = this._name;
-    popupImageCaption.textContent = this._name;
-    openPopup(popupCardImage);
   }
 
   _deleteCard() {
@@ -51,8 +41,7 @@ class Card {
     this._likeButton.classList.toggle("gallery__card-button_active");
   }
 
-  _generateCard() {
-    this._element = this._getTemplate();
+  generateCard() {
     this._deleteButton = this._element.querySelector(".gallery__card-delete");
     this._cardImage = this._element.querySelector(".gallery__card-image");
     this._likeButton = this._element.querySelector(".gallery__card-button");
@@ -60,10 +49,6 @@ class Card {
     this._cardTitle.textContent = this._name;
     this._cardImage.src = this._link;
     this._cardImage.alt = this._name;
-  }
-
-  createCard() {
-    this._generateCard();
     this._setEventListenters();
     return this._element;
   }
