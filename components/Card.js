@@ -1,5 +1,3 @@
-//import { popupImage, popupCardImage, popupImageCaption } from "./index.js";
-
 class Card {
   constructor({ name, link, handleCLick }, templateSelect, cardSelect) {
     this._templateSelector = templateSelect;
